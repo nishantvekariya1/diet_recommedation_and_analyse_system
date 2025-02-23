@@ -1,7 +1,6 @@
 .login-container{
     display: flex;
     flex-wrap: nowrap;
-    
 }
 
 .login-showcase{
@@ -34,7 +33,7 @@
 
 .intro-name {
     font-family: "futura";
-    margin: 0.5px;
+    margin: 0 0 0.5px 0;
     width: 50vw;
     font-size: 3.5rem;
     font-optical-sizing: auto;
@@ -44,7 +43,13 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1.2em;
-    padding: 150px 0 20px 0;
+    padding: 0px 0 20px 0;
+}
+
+.showcase-img{
+    margin: 0px 9rem;
+        width: 50%;
+        height: 60%;
 }
 
 .introStart {

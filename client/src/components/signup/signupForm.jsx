@@ -103,8 +103,6 @@ export default function SignupForm() {
     });
     navigate("/");
   };
-
-  // const handleInputChange = (e) => {
   //     // console.log(e);
   //     let name = e.target.name;
   //     let value = e.target.value;
@@ -227,8 +225,8 @@ export default function SignupForm() {
                   name="healthGoals"
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={"weight loss"}>Weight Loss</MenuItem>
-                  <MenuItem value={"weight gain"}>Weight Gain</MenuItem>
+                  <MenuItem value={"loss"}>Weight Loss</MenuItem>
+                  <MenuItem value={"gain"}>Weight Gain</MenuItem>
                 </Select>
               </FormControl>
             </Box>

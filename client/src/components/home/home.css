@@ -1,3 +1,133 @@
 .homeHeading{
     padding: 20px 0 0 50px;
 }
+
+.recommendation-title {
+  text-align: center;
+  margin-bottom: 20px; /* Adds some space below the title */
+}
+
+.recommendation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #ffffff;
+  }
+  
+  .user-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .info-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .info-icon {
+    margin-right: 1rem;
+    color: #4f46e5;
+  }
+  
+  .info-content h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #9ca3af;
+  }
+  
+  .info-content p {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+  }
+  
+  .meal-plan-container {
+    margin-bottom: 2rem;
+  }
+  
+  .meal-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .meal-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .meal-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: #4f46e5;
+  }
+  
+  .meal-header h3 {
+    margin-left: 0.5rem;
+  }
+  
+  .meal-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .meal-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .nutrition-summary {
+    margin-top: 2rem;
+  }
+  
+  .nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .nutrition-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .nutrition-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #9ca3af;
+  }
+  
+  .nutrition-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4f46e5;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+  
+  

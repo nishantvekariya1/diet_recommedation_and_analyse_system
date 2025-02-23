@@ -7,6 +7,7 @@ import Signup from "./components/signup/signup";
 import Home from "./components/home/home";
 import SearchFood from "./components/searchFood/searchFood";
 import Food from "./components/foodForm/food";
+import Update from "./components/update/update";
 
 function App() {
   return (
@@ -14,9 +15,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/searchFood" element={<SearchFood />} /> */}
-        {/* <Route path="/food" element={<Food />} /> */}
+        <Route path="/searchFood" element={<SearchFood />} />
+        <Route path="/food" element={<Food />} />
         <Route path="/register" element={<Signup />} />
+        <Route path="/update" element={<Update />} />
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route path="/logout" element={<Logout />} /> */}
         {/* <Route path="*" element={<Error />} /> */}

@@ -15,11 +15,12 @@ router.route("/user/update/:id").patch(authController.updateUserById);
 
 router.route("/get-user-info").post(authController.getUserByEmail);
 
-router.route("/update-profile").post(authController.updateProfile);
-
 router.route("/all-foods").get(authController.getAllFoods);
 
 router.route("/search-food").get(authController.searchFood);
+
+// nihal
+router.route("/update-profile").post(authController.updateProfile);
 
 router.route("/filter-food").get(authController.filterFood);
 router.route("/user").get(authMiddleware, authController.user);

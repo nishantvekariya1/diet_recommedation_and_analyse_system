@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Food = require("../models/food");
 const axios = require("axios");
 const express = require("express");
+const mongoose=require("mongoose");
 
 const user = async (req, res) => {
   try {
@@ -206,6 +207,116 @@ const register = async (req, res) => {
   }
 };
 
+
+
+// nihal
+const updateProfile = async (req, res) => {
+  try {
+    console.log('Request body:', req.body);
+    const {
+      email,
+      age,
+      gender,
+      weight,
+      height,
+      activityLevel,
+      healthGoals,
+      dietaryPreferences,
+      allergies,
+    } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    // Verify MongoDB connection
+    const connectionState = mongoose.connection.readyState;
+    console.log('MongoDB connection state:', connectionState);
+    if (connectionState !== 1) {
+      return res.status(500).json({ message: "Database not connected" });
+    }
+
+    // Find user
+    const user = await User.findOne({ email });
+    console.log('Found user:', user);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Prepare data for Python API
+    const userInfo = {
+      age,
+      gender,
+      weight,
+      height,
+      activity_level: activityLevel,
+      health_goal: healthGoals,
+      diet_type: dietaryPreferences,
+      allergies: allergies || [], // Ensure allergies is an array
+    };
+
+    // Fetch diet recommendation
+    const response = await axios.post(
+      "http://127.0.0.1:5000/recommend",
+      userInfo,
+      { headers: { "Content-Type": "application/json" } }
+    );
+    console.log('Python API response:', response.data);
+
+    const { meal_plan, nutrition_summary, target_calories } = response.data;
+
+    // Update user fields according to schema
+    user.mealPlan = {
+      Breakfast: meal_plan.Breakfast || [],
+      Lunch: meal_plan.Lunch || [],
+      Dinner: meal_plan.Dinner || [],
+    };
+    user.nutritionSummary = {
+      calories: nutrition_summary.calories || 0,
+      carbs: nutrition_summary.carbs || 0,
+      fat: nutrition_summary.fat || 0,
+      protein: nutrition_summary.protein || 0,
+    };
+    user.targetCalories = target_calories || 0;
+
+    // Mark nested objects as modified
+    user.markModified('mealPlan');
+    user.markModified('nutritionSummary');
+
+    // Optionally update other fields if provided
+    if (age) user.age = age;
+    if (gender) user.gender = gender;
+    if (weight) user.weight = weight;
+    if (height) user.height = height;
+    if (activityLevel) user.activityLevel = activityLevel;
+    if (healthGoals) user.healthGoals = healthGoals;
+    if (dietaryPreferences) user.dietaryPreferences = dietaryPreferences;
+    if (allergies) user.allergies = allergies;
+
+    console.log('User before save:', user);
+
+    // Save changes
+    const updatedUser = await user.save();
+    if (!updatedUser) {
+      throw new Error("Failed to save user updates");
+    }
+    console.log('User after save:', updatedUser);
+
+    // Verify update in DB
+    const verifiedUser = await User.findOne({ email });
+    console.log('Verified user from DB:', verifiedUser);
+
+    res.status(200).json({
+      message: "Profile updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error("Profile update error:", error.stack);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+
 const getUserByEmail = async (req, res, next) => {
   try {
     const { email } = req.body;
@@ -343,87 +454,16 @@ const filterFood = async (req, res, next) => {
   }
 };
 
-const updateProfile = async (req, res) => {
-  try {
-    const {
-      email,
-      age,
-      gender,
-      weight,
-      height,
-      activity_level,
-      health_goal,
-      diet_type,
-      allergies,
-    } = req.body;
-
-    if (!email) {
-      return res.status(400).json({ message: "Email is required" });
-    }
-
-    // Find user in the database
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    const userInfo = {
-      age,
-      gender,
-      weight,
-      height,
-      activity_level,
-      health_goal,
-      diet_type,
-      allergies,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/recommend",
-        userInfo,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const { meal_plan, nutrition_summary, target_calories } = response.data;
-
-      // Update user with new data
-      user.mealPlan = meal_plan;
-      user.nutritionSummary = nutrition_summary;
-      user.targetCalories = target_calories;
-
-      await user.save();
-
-      res.status(200).json({
-        message: "Profile updated successfully",
-        user,
-      });
-    } catch (error) {
-      console.error("Error fetching diet recommendation:", error.message);
-      return res
-        .status(500)
-        .json({ message: "Failed to update diet recommendation" });
-    }
-  } catch (error) {
-    console.error("Profile update error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
 module.exports = {
   user,
   home,
   register,
   login,
   updateUserById,
+  updateProfile,
   getUserByEmail,
   getUserById,
   getAllFoods,
   searchFood,
   filterFood,
-  updateProfile,
 };

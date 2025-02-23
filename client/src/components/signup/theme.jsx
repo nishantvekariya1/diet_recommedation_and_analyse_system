@@ -3,6 +3,18 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    typography: {
+      fontFamily: "Roboto, sans-serif",
+    },
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            backgroundColor: "#f5f5f5",
+          },
+        },
+      },
+    },
     primary: {
       main: "#ffffff", // Set the primary color to white
     },

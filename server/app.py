@@ -3,12 +3,12 @@ import pandas as pd
 import random
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 CORS(app)
 
 # Load your dataset
-food_df = pd.read_csv("C:\\Nishant(Me)\\WORKS\\PROJECTS\\Diet_Recommendation_System\\server\\Final_Dataset2.csv")
+# Load your dataset
+food_df = pd.read_csv("C:\\Users\\adity\\Downloads\\Diet_Recommendation_System without nodemodules\\Diet_Recommendation_System\\server\\Final_Dataset2.csv")
 
 def create_user_profile(age, gender, height, weight, activity_level, health_goal, diet_type, allergies=None):
     if gender.lower() == 'male':
@@ -156,23 +156,30 @@ def get_diet_recommendation(user_info, food_df):
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    user_info = request.json
-    recommendation = get_diet_recommendation(user_info, food_df)
-    return jsonify(recommendation)
+    try:
+        user_info = request.json
 
-# @app.route('/recommend', methods=['POST'])
-# def recommend():
-#     user_info = request.json
+        # Input validation
+        required_fields = ['age', 'gender', 'height', 'weight', 'activity_level', 
+                         'health_goal', 'diet_type']
+        for field in required_fields:
+            if field not in user_info:
+                return jsonify({"error": f"Missing required field: {field}"}), 400
 
-#     print("Received user data:", user_info)  # Debugging statement
+        # Validate numeric fields
+        for field in ['age', 'height', 'weight']:
+            try:
+                user_info[field] = float(user_info[field])
+                if user_info[field] <= 0:
+                    return jsonify({"error": f"{field} must be positive"}), 400
+            except (ValueError, TypeError):
+                return jsonify({"error": f"{field} must be a number"}), 400
 
-#     # Ensure numerical values are correctly parsed
-#     user_info['age'] = float(user_info['age'])
-#     user_info['height'] = float(user_info['height'])
-#     user_info['weight'] = float(user_info['weight'])
-
-#     recommendation = get_diet_recommendation(user_info, food_df)
-#     return jsonify(recommendation)
+        recommendation = get_diet_recommendation(user_info, food_df)
+        return jsonify(recommendation)
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
