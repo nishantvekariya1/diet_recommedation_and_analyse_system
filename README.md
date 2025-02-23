@@ -17,10 +17,17 @@ How Our Solution Solves the Problem:
 This solution simplifies healthy eating by offering smart, data-driven, and user-friendly meal planning, making it easier for users to maintain a balanced diet while staying aligned with their health goals.
 
 ## Table of Contents
-
+- [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
+
+## Demo
+![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/1.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/2.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/3.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/4.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/5.png)
 
 ## Features
 
@@ -84,6 +91,10 @@ This solution simplifies healthy eating by offering smart, data-driven, and user
     # In the client directory
     cd client
     npm install
+
+    # In the client directory
+    set your file path of dataset
+    pip install require_libraries (according to file)
     ```
 
 3. Create a `.env` file in the root directory and add the following environment variables:
@@ -103,6 +114,10 @@ This solution simplifies healthy eating by offering smart, data-driven, and user
     # In the client directory
     cd client
     npm run dev
+
+    # In the client directory to run model
+    cd client
+    python app.py
     ```
 
 5. Open your browser and navigate to `http://localhost:5173` to access the Diet Recommendation Website.
