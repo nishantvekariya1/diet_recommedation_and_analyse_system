@@ -2,6 +2,20 @@
 
 The Diet Recommendation Website is a health-focused platform that provides personalized diet plans based on user preferences, health goals, and dietary restrictions. Built using the MERN stack (MongoDB, Express.js, React.js, Node.js), the platform offers features like user profile management, health tracking, and AI-based meal recommendations.
 
+## Problem Statement
+Maintaining a healthy diet is challenging due to a lack of personalized guidance, awareness of nutritional needs, and accessibility to well-structured meal plans. Many individuals struggle with meal planning, tracking their nutrition, and adhering to diets that align with their health goals and dietary restrictions.
+
+## Solution
+Our Diet Recommendation Website leverages AI-powered personalized meal planning to help users achieve their health goals, whether it’s weight loss, muscle gain, or balanced nutrition. By analyzing user preferences, dietary restrictions, and activity levels, our platform generates customized diet plans, tracks nutritional intake, and offers AI-driven meal suggestions.
+
+How Our Solution Solves the Problem:
+- Personalized Diet Plans: AI-driven meal recommendations tailored to individual health profiles.
+- Dietary Restrictions Management: Users can set allergies and preferences to receive customized suggestions.
+- Health Tracking: Monitors calorie intake, macronutrients, and daily nutrition balance.
+- Admin Dashboard: Provides insights into user health trends, most followed diet plans, and engagement analytics.
+
+This solution simplifies healthy eating by offering smart, data-driven, and user-friendly meal planning, making it easier for users to maintain a balanced diet while staying aligned with their health goals.
+
 ## Table of Contents
 
 - [Features](#features)
