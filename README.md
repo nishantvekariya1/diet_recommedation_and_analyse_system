@@ -23,11 +23,11 @@ This solution simplifies healthy eating by offering smart, data-driven, and user
 - [Getting Started](#getting-started)
 
 ## Demo
-![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/1.png)
-![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/2.png)
-![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/3.png)
-![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/4.png)
-![Demo Screenshot](https://github.com/nishantvekariya1/diet-recommendation/blob/master/Screenshots/5.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet_recommedation_and_analyse_system/blob/master/Screenshots/1.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet_recommedation_and_analyse_system/blob/master/Screenshots/2.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet_recommedation_and_analyse_system/blob/master/Screenshots/3.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet_recommedation_and_analyse_system/blob/master/Screenshots/4.png)
+![Demo Screenshot](https://github.com/nishantvekariya1/diet_recommedation_and_analyse_system/blob/master/Screenshots/5.png)
 
 ## Features
 
